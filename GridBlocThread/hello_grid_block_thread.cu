@@ -6,7 +6,8 @@
 __global__ void checkIndex(void)
 {
     printf("x index: %d, threadIdx:(%d,%d,%d) blockIdx:(%d,%d,%d) blockDim:(%d,%d,%d) gridDim(%d,%d,%d)\n",
-    threadIdx.x + threadIdx.y*blockDim.x + blockIdx.x*blockDim.x*blockDim.y + blockIdx.y*blockDim.x*blockDim.y*gridDim.x,
+    // threadIdx.x + threadIdx.y*blockDim.x + blockIdx.x*blockDim.x*blockDim.y + blockIdx.y*blockDim.x*blockDim.y*gridDim.x,
+    threadIdx.x + blockIdx.x*blockDim.x + (threadIdx.y + blockIdx.y*blockDim.y)*(gridDim.x*blockDim.x),
     threadIdx.x,threadIdx.y,threadIdx.z,
     blockIdx.x,blockIdx.y,blockIdx.z,
     blockDim.x,blockDim.y,blockDim.z,
